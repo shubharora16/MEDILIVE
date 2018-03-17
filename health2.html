@@ -1,0 +1,133 @@
+<div ng-controller="healthpage">
+<style>
+    table, th , td  {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+    table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+    }
+    table tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+    .prebutton {
+        display: inline-block;
+        padding: 5px 10px;
+        font-size: 15px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 9px #999;
+    }
+
+    .prebutton:hover {background-color: #3e8e41}
+
+    .prebutton:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+
+
+</style>
+
+<h1 align="center" style="color:green;">Welcome to Health Diagnosis System</h1>
+<hr>
+<div class="col-md-2">
+
+
+
+        <h4 style="font-family: 'Berlin Sans FB Demi'">Symptoms Id : </h4>
+
+        <input style="text-align: center" class="form-control" ng-model="more_symp">
+        <h4 style="font-family: 'Berlin Sans FB Demi'">Year Of Birth : </h4>
+        <input style="text-align: center" class="form-control" ng-model="more_dob">
+
+        <h5 style="font-family: 'Berlin Sans FB Demi'">Select The Category</h5>
+
+            <button type="button" class="btn btn-primary" ng-click='man_more()'>Man</button>
+            <button type="button" class="btn btn-success" ng-click='woman_more()'>Woman</button><br/>
+
+        <p style="color: darkblue">Related Symptoms : </p>
+        <table><tr><th>Sympton Name</th><th>ID</th></tr>
+
+        <tr ng-repeat="ext_sym in extra_symptoms"><td>{{ext_sym.Name}}</td><td><a ng-click='diag_pass(ext_sym.ID)'>{{ext_sym.ID}}</a><br></td></tr>
+
+</table><br><br><br>
+    <button class="prebutton" ng-click='prepage()'><< Previous Page</button>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-5" >
+
+
+
+    <h4 style="font-family: 'Berlin Sans FB Demi'" align="center">All Symptoms Id : </h4>
+
+        <input align="middle" style="text-align: center" width="30" class="form-control" ng-model="all_symp">
+        <h4 style="font-family: 'Berlin Sans FB Demi'" align="center">Year Of Birth : </h4>
+        <input style="text-align: center" align="middle"class="form-control"ng-model="dob">
+
+        <h5 style="font-family: 'Berlin Sans FB Demi'">Select The Category</h5>
+
+            <button type="button" class="btn btn-primary" ng-click='man_dis()'>Man</button>
+            <button type="button" class="btn btn-success" ng-click='woman_dis()'>Woman</button><br>
+
+
+
+
+        <p style="color: darkblue">Diseases Are : </p>
+
+
+    <table><tr><th>Disease Name</th><th>Accuracy</th><th>Disease Id</th> <th>Doctor</th></tr>
+        <tr ng-repeat="disease in all_diseases"><td>{{disease.Issue.Name}}</td><td>{{disease.Issue.Accuracy}}</td><td><a ng-click='dis_com(disease.Issue.ID)'/>{{disease.Issue.ID}}</td>
+
+      <td>  <span ng-repeat="varr in disease.Specialisation">{{varr.Name}}<br></span></td>
+
+        </tr>
+
+</table>
+</div>
+
+
+
+
+
+
+
+<div class="col-md-5">
+
+        <h4 style="font-family: 'Berlin Sans FB Demi'">Disease Id : </h4><input style="text-align: center" class="form-control" ng-model="dis_id">
+<p></p><br>
+        <button type="button" class="btn btn-danger" ng-click='det_dis()'>Show Disease Details</button>
+        <table><tr><th>Title</th><th>Decription</th></tr>
+
+        <p><h3><tr><td>Name</td><td>{{temp_dis.Name}}</td></tr></h3>
+            <p><tr><td>Description </td><td>{{temp_dis.Description}}</td></p></tr>
+            <p><tr><td>Medical Condition</td><td>{{temp_dis.MedicalCondition}}</td></p></tr>
+            <p><tr><td>Treatment Description</td><td>{{temp_dis.TreatmentDescription}}</td></tr></p>
+
+            </p>
+    </table>
+
+</div>
+
+
+
+</div>
+
+
+
+
+

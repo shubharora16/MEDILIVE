@@ -1,0 +1,95 @@
+<div ng-controller="healthpage">
+<style>
+    table, th , td  {
+        border: 1px solid grey;
+        border-collapse: collapse;
+        padding: 5px;
+    }
+    table tr:nth-child(odd) {
+        background-color: #f1f1f1;
+    }
+    table tr:nth-child(even) {
+        background-color: #ffffff;
+    }
+
+    .nextbutton {
+        display: inline-block;
+        padding: 5px 10px;
+        font-size: 15px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        outline: none;
+        color: #fff;
+        background-color: #4CAF50;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 9px #999;
+    }
+
+    .nextbutton:hover {background-color: #3e8e41}
+
+    .nextbutton:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+    }
+
+
+
+</style>
+
+<h1 align="center" style="color:green;">Welcome to Health Diagnosis System</h1>
+<hr>
+
+
+
+
+    <div class="col-md-4"><h4 style="font-family: 'Berlin Sans FB Demi'"> Body parts :</h4>
+    <table><tr><th>Body Parts</th><th>ID</th></tr>
+        <tr ng-repeat="allbodypart in allbodyparts"><td>{{allbodypart.Name}}</td><td><a ng-click='callurl(allbodypart.ID)'>{{allbodypart.ID}}</a></td></tr>
+        </table>
+    </div>
+
+
+
+
+
+
+    <div class="col-md-4">
+
+
+            <h4 style="font-family: 'Berlin Sans FB Demi'">Body Part ID :</h4><input class="form-control" ng-model="bdyid"><br>
+
+            <button type="button" class="btn btn-danger" ng-click='callurl(bdyid)'>Show Sub Body Parts<br></button>
+<p></p><br>
+         <table><tr><th>Sub Body Parts</th><th>ID</th></tr>
+            <tr ng-repeat="subbdypart in subbdyparts"><td>{{subbdypart.Name}}</td><td><a ng-click='set_subbdy(subbdypart.ID)'>{{subbdypart.ID}}</a></td></tr>
+                </table>
+        </div>
+
+
+    <div class="col-md-4">
+
+            <h4 style="font-family: 'Berlin Sans FB Demi'"> Sub Body Part ID:</h4>
+            <input class="form-control" ng-model="subbdy">
+            <h5 style="font-family: 'Berlin Sans FB Demi'">Select The Category</h5>
+
+                <button type="button" class="btn btn-primary" ng-click='manclick()'>Man</button>
+                <button type="button" class="btn btn-success" ng-click='womanclick()'>Woman</button></li><br/><br>
+                <button type="button" class="btn btn-info" ng-click='boyclick()'>Boy</button>
+                <button type="button" class="btn btn-warning" ng-click='girlclick()'>Girl</button></li><br/><br>
+
+
+
+            <table><tr><th>Sympton Name</th><th>ID</th></tr>
+
+            <tr ng-repeat="symptom in symptomcom"><td>{{symptom.Name}}</td><td>{{symptom.ID}}</td></tr>
+                </table>
+<br><br><br>
+<button class="nextbutton" ng-click='nextpage()'>Next Page >></button>
+
+    </div>
+
+
+</div>
